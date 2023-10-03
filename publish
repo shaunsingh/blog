@@ -2,7 +2,7 @@
 
 set -euox pipefail
 
-git checkout master
+git checkout main 
 git merge develop
-git push origin master develop
+git push origin main develop
 git checkout develop
