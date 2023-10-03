@@ -1,0 +1,8 @@
+{:base-url "https://nyoom.engineering/"
+ :site-title "Nyoom Engineering"
+ :description "Personal blog for engineering adventures"
+ :authors [{:name "Shaurya Singh"
+            :email "shaunsingh0207@gmail.com"
+            :github "shaunsingh"
+            :bio ""
+            :url "https://nyoom.engineering"}]}

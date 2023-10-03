@@ -1,0 +1,175 @@
+@import "_shared";
+
+@keyframes slide-from-right {
+  0% {
+    transform: translateX(#{rems(-32px)});
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1.0;
+  }
+}
+@keyframes slide-to-right {
+  from {
+    opacity: 0.8;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 1.0;
+    transform: translateX(32px);
+  }
+}
+
+// Layout
+// ---------------------------------------------------------------------------
+.layout {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+}
+.sidebar {
+  margin: 0;
+  background-position: 50% 25%;
+  width: 100%;
+}
+.sidebar__inner {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout .sidebar {
+  z-index: 4;
+}
+.main {
+  padding-bottom: rems(100px);
+}
+
+
+// Blocks
+// ---------------------------------------------------------------------------
+
+.navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  border-top: 1px solid $slate;
+  border-bottom: 2px solid $slate;
+  background: $bone;
+  z-index: 4;
+  overflow: hidden;
+}
+.navbar__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  justify-content: space-between;
+}
+.navbar__item {
+  position: relative;
+  box-sizing: border-box;
+  width: 1/3 * 100%;
+  font-size: rems(12px);
+  transition: all 250ms ease-in-out;
+  opacity: 0.8;
+  overflow: hidden;
+}
+.navbar__item::before,
+.navbar__item::after {
+  position: absolute;
+  transition: all 250ms ease-in-out;
+}
+.navbar__item::before {
+  @extend %icon;
+  top: rems(10px);
+  left: rems(8px);
+  color: #fff;
+  font-size: #{rems(30px)};
+  line-height: 1;
+  opacity: 0;
+  transform: translateX(#{rems(-20px)});
+  content: '\f105';
+  z-index: 2;
+}
+.navbar__item::after {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: rems(32px);
+  background: $teal;
+  z-index: 1;
+  transform: translateX(#{rems(-42px)});
+  content: '';
+}
+.navbar__item:nth-child(2) {
+  border-left: 1px solid $slate;
+  border-right: 1px solid $slate;
+}
+.navbar__item a {
+  position: relative;
+  display: block;
+  padding: rems(8px);
+  color: $gray-teal;
+  background: $bone;
+  text-decoration: none;
+  transform: translateX(0);
+  z-index: 3;
+}
+.navbar__label {
+  display: block;
+  font-size: rems(15px);
+  color: $teal;
+}
+.navbar__active {
+  opacity: 1.0;
+}
+.navbar__active a {
+  animation: slide-to-right 500ms ease forwards;
+}
+.navbar__active::before,
+.navbar__active::after {
+  animation: slide-from-right 500ms ease forwards;
+}
+
+.author__avatar {
+  margin: auto;
+  margin-bottom: rems(16px);
+}
+
+.media-links {
+  max-width: rems(400px);
+  padding: 0 rems(16px);
+}
+
+.not-mobile {
+  display: none;
+}
+
+.page__title {
+  margin-bottom: rems(32px);
+  color: $slate-purple;
+  text-align: center;
+}
+
+.post__meta {
+  display: block;
+  width: 100%;
+}
+.post__meta > span {
+  width: 40%;
+}
+
+.profile__quote {
+  margin-top: rems(32px);
+  margin-left: rems(32px);
+}
+
+.about .selfie {
+  width: 100%;
+  margin: auto;
+  margin-bottom: rems(32px);
+}

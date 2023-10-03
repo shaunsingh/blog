@@ -1,0 +1,203 @@
+@import "_shared";
+
+// Layout
+// ---------------------------------------------------------------------------
+
+.content {
+  position: relative;
+  margin: rems(32px);
+  margin-bottom: rems(64px);
+  z-index: 6;
+}
+.hero {
+  height: rems(416px);
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+}
+.layout {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  margin-left: rems(452px);
+  margin-right: rems(32px);
+}
+.main {
+  position: relative;
+  flex: 0 1 auto;
+  width: 100%;
+  max-width: rems(900px);
+  padding-top: 0;
+  z-index: 3;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: rems(420px);
+  overflow: auto;
+}
+.sidebar__inner {
+  position: relative;
+  border-top: rems(10px) solid $teal;
+  width: rems(420px);
+  min-height: 100%;
+  padding: 0 rems(32px);
+  z-index: 5;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
+
+// Blocks
+// ---------------------------------------------------------------------------
+
+.author__profile {
+  flex-wrap: nowrap;
+}
+.author__avatar {
+  flex: 0 0 auto;
+  margin-top: rems(4px);
+}
+
+.navbar {
+  margin-bottom: rems(16px);
+  padding: 0;
+  border-top: 1px solid $teal;
+  border-bottom: 2px solid $teal;
+  z-index: 200;
+}
+
+.navbar a,
+.media-links a {
+  display: block;
+  text-decoration: none;
+  color: $bone;
+}
+
+.navbar a {
+  transform: translateX(0);
+  transition: all 250ms ease;
+}
+
+.navbar__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.navbar__item {
+  @extend %mono;
+  display: block;
+  position: relative;
+  padding: rems(8px);
+  opacity: 0.75;
+  color: $neon-pink;
+  font-size: rems(18px);
+  font-weight: 600;
+  letter-spacing: rems(2px);
+  transition: opacity 250ms ease;
+}
+.navbar__item:hover,
+.navbar__item:active,
+.navbar__active {
+  opacity: 1.0;
+}
+.navbar__item:hover a {
+  transform: translateX(#{rems(20px)});
+}
+.navbar__item::before {
+  @extend %icon;
+  position: absolute;
+  top: rems(20px);
+  left: rems(8px);
+  font-size: #{rems(30px)};
+  line-height: 1;
+  opacity: 0;
+  transform: translateX(#{rems(-20px)});
+  transition: all 250ms ease;
+  content: '\f105';
+}
+.navbar__item:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+.navbar__active, .navbar__active a {
+  color: $teal;
+}
+.navbar__item:active {
+  background: $gray-teal;
+  &, a {
+    color: $bone;
+  }
+}
+.navbar__item a {
+  display: block;
+  padding: rems(4px);
+  transition: all 250ms ease-in-out;
+}
+.navbar__item:not(:last-child) {
+}
+.navbar__label {
+  @extend %copy;
+  display: block;
+  font-size: rems(15px);
+}
+
+.page__title {
+  margin-bottom: rems(16px);
+  font-size: rems(50px);
+  color: $slate-purple;
+}
+.page__title::before,
+.page__title::after {
+  font-size: rems(50px);
+}
+.page__path:not(:last-child)::after {
+  font-size: rems(50px);
+}
+
+.post__permalink {
+  position: absolute;
+  top: rems(21px);
+  left: rems(-24px);
+  bottom: 0;
+  margin: auto;
+  color: $light-slate;
+}
+
+.profile__quote {
+  @extend %copy;
+  margin-top: rems(32px);
+  margin-bottom: rems(32px);
+  margin-right: rems(10px);
+  margin-left: rems(16px);
+  padding-left: rems(32px);
+}
+.projects__list {
+  justify-content: space-between;
+}
+.projects__item {
+  flex: 0 1 48%;
+  margin-bottom: rems(32px);
+}
+
+
+.project__header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.project__hero {
+  flex: 1 1 48%;
+}
+.project__info {
+  flex: 0 1 48%;
+  margin-left: rems(16px);
+}
+
+.about .selfie {
+  float: right;
+  width: 18vw;
+  max-width: rems(340px);
+  margin-left: rems(32px);
+}

@@ -1,0 +1,26 @@
+@import "_shared";
+
+// Layout
+// ---------------------------------------------------------------------------
+
+
+// Blocks
+// ---------------------------------------------------------------------------
+
+.page__title {
+  margin-bottom: rems(64px);
+  font-size: rems(42px);
+}
+.page__title::before,
+.page__title::after {
+  font-size: rems(42px);
+}
+.page__path:not(:last-child)::after {
+  font-size: rems(42px);
+}
+
+.about .selfie {
+  float: right;
+  margin-left: rems(32px);
+  max-width: rems(260px);
+}
